@@ -2,28 +2,59 @@
 <html>
     <head>
         <title>Phone Brand</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <style>
+            .phone-gallery {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 30px;
+            }
+            .phone-card {
+                text-align: center;
+                width: 200px;
+            }
+            .phone-card img {
+                width: 100%;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+            .phone-card p {
+                margin-top: 8px;
+                font-weight: bold;
+            }
+        </style>
     </head>
     <body>
         <h1>Phone Recommendation</h1>
         <div class="section">
-        <form action="/" method="POST" enctype="multipart/form-data" novalidate>
-        <label>Phone Brand:
-        <select name="brand">
-            <option value="iPhone">iPhone</option>
-            <option value="Samsung">Samsung</option>
-            <option value="Honor">Honor</option>
-        </select>
-        </label>
-        <label>Price (RM)
-            <select name="price">
-            <option value="1000">1000</option>
-            <option value="2000">2000</option>
-            <option value="3000">3000</option>
-        </select>
-        </label>
-        </form>
+            <form action="/" method="POST" enctype="multipart/form-data" novalidate>
+                <label>Phone Brand:
+                    <select name="brand">
+                        <option value="iPhone">iPhone</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Honor">Honor</option>
+                    </select>
+                </label>
+                <label>Price (RM)
+                    <select name="price">
+                        <option value="1000">1000</option>
+                        <option value="2000">2000</option>
+                        <option value="3000">3000</option>
+                    </select>
+                </label>
+                <button type="submit">Filter</button>
+            </form>
         </div>
 
+        <div class="phone-gallery">
+            {% for phone in phones %}
+                <div class="phone-card">
+                    <img src="{{ url_for('static', filename=phone['image_filename']) }}" alt="{{ phone['brand'] }}">
+                    <p>{{ phone['brand'] }}</p>
+                    <p>RM {{ phone['price'] }}</p>
+                </div>
+            {% endfor %}
+        </div>
     </body>
 </html>
