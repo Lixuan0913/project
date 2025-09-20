@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Phone Brand</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
         <style>
             .phone-gallery {
                 display: flex;
@@ -17,7 +17,7 @@
             .phone-card img {
                 width: 100%;
                 border-radius: 10px;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             }
             .phone-card p {
                 margin-top: 8px;
@@ -31,7 +31,6 @@
             <form action="/" method="POST" enctype="multipart/form-data" novalidate>
                 <label>Phone Brand:
                     <select name="brand">
-                        <option value="Phone">All</option>
                         <option value="iPhone">iPhone</option>
                         <option value="Samsung">Samsung</option>
                         <option value="Honor">Honor</option>
@@ -39,28 +38,24 @@
                 </label>
                 <label>Price (RM)
                     <select name="price">
-                        <option value="All">All</option>
                         <option value="1000">1000</option>
                         <option value="2000">2000</option>
                         <option value="3000">3000</option>
                     </select>
                 </label>
+                <button type="submit">Filter</button>
             </form>
         </div>
 
+        <!-- Phone Showcase Section -->
         <div class="phone-gallery">
-            <div class="phone-card">
-                <img src="{{ url_for('static', filename='iphone.jpg')}}" alt="iPhone">
-                <p>iPhone</p>
-            </div>
-            <div class="phone-card">
-                <img src="{{ url_for('static', filename='samsung.jpg')}}" alt="Samsung">
-                <p>Samsung</p>
-            </div>
-            <div class="phone-card">
-                <img src="{{ url_for('static', filename='honor.jpg')}}" alt="Honor">
-                <p>Honor</p>
-            </div>
+            {% for phone in phones %}
+                <div class="phone-card">
+                    <img src="{{ url_for('static', filename=phone['image_filename']) }}" alt="{{ phone['brand'] }}">
+                    <p>{{ phone['brand'] }}</p>
+                    <p>RM {{ phone['price'] }}</p>
+                </div>
+            {% endfor %}
         </div>
     </body>
 </html>
