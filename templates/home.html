@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Phone Brand</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    </head>
+    <body>
+        <h1>Phone Recommendation</h1>
+        <div class="section">
+        <form action="/" method="POST" enctype="multipart/form-data" novalidate>
+        <label>Phone Brand:
+        <select name="brand">
+            <option value="iPhone">iPhone</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Honor">Honor</option>
+        </select>
+        </label>
+        <label>Price (RM)
+            <select name="price">
+            <option value="1000">1000</option>
+            <option value="2000">2000</option>
+            <option value="3000">3000</option>
+        </select>
+        </label>
+        </form>
+        </div>
+
+    </body>
+</html>
