@@ -17,6 +17,21 @@ cursor.execute("INSERT INTO phones (brand, price, image_filename) VALUES (?, ?, 
 cursor.execute("INSERT INTO phones (brand, price, image_filename) VALUES (?, ?, ?)", ("Samsung", 2000, "samsung.jpg"))
 cursor.execute("INSERT INTO phones (brand, price, image_filename) VALUES (?, ?, ?)", ("Honor", 1000, "honor.jpg"))
 
+try:
+    cursor.execute("ALTER TABLE phones ADD COLUMN screen_size TEXT NOT NULL DEFAULT 'unknown'")
+except sqlite3.OperationalError:
+    print("Column 'screen_size' already exists")
+
+try:
+    cursor.execute("ALTER TABLE phones ADD COLUMN charging_port TEXT NOT NULL DEFAULT 'unknown'")
+except sqlite3.OperationalError:
+    print("Column 'charging_port' already exists")
+
+try:
+    cursor.execute("ALTER TABLE phones ADD COLUMN processor TEXT NOT NULL DEFAULT 'unknown'")
+except sqlite3.OperationalError:
+    print("Column 'processor' already exists")
+
 conn.commit()
 conn.close()
 
