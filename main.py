@@ -3,38 +3,32 @@ import sqlite3
 
 app = Flask(__name__)
 
-# Function to connect to the SQLite database
+
 def get_db_connection():
-    conn = sqlite3.connect('phones.db')  # Connect to the database file
-    conn.row_factory = sqlite3.Row  # This allows you to access columns by name
+    conn = sqlite3.connect('phones.db')
+    conn.row_factory = sqlite3.Row  
     return conn
 
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
-        # Get the user-selected brand and price from the form
         brand_name = request.form.get("brand")
         price = request.form.get('price')
         
-        # Connect to the SQLite database
         conn = get_db_connection()
         cursor = conn.cursor()
         
-        # Query the database based on brand and price
         cursor.execute("SELECT * FROM phones WHERE brand = ? AND price = ?", (brand_name, price))
-        phones = cursor.fetchall()  # Get all the matching rows
+        phones = cursor.fetchall() 
         
-        # Close the connection to the database
         conn.close()
-        
-        # Return the results to the template
+
         return render_template("home.html", phones=phones)
 
-    # If it's a GET request, display all phones
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM phones")  # Get all phones
-    phones = cursor.fetchall()  # Fetch all the rows
+    cursor.execute("SELECT * FROM phones") 
+    phones = cursor.fetchall()  
     conn.close()
 
     return render_template("home.html", phones=phones)
