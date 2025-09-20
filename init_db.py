@@ -23,9 +23,9 @@ except sqlite3.OperationalError:
     print("Column 'screen_size' already exists")
 
 try:
-    cursor.execute("ALTER TABLE phones ADD COLUMN sim_type TEXT NOT NULL DEFAULT 'unknown'")
+    cursor.execute("ALTER TABLE phones ADD COLUMN sim TEXT NOT NULL DEFAULT 'unknown'")
 except sqlite3.OperationalError:
-    print("Column 'sim_type' already exists")
+    print("Column 'sim' already exists")
 
 conn.commit()
 conn.close()

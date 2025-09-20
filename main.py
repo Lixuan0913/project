@@ -20,7 +20,7 @@ def home():
         conn = get_db_connection()
         cursor = conn.cursor()
         
-        cursor.execute("SELECT * FROM phones WHERE brand = ?, screen_size = ?, sim = ? AND price = ?", (brand_name, screen_size, sim, price))
+        cursor.execute("SELECT * FROM phones WHERE brand = ? AND screen_size = ? AND sim = ? AND price = ?", (brand_name, screen_size, sim, price))
         phones = cursor.fetchall() 
         
         conn.close()
