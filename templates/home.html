@@ -31,6 +31,7 @@
             <form action="/" method="POST" enctype="multipart/form-data" novalidate>
                 <label>Phone Brand:
                     <select name="brand">
+                        <option value="">All</option>
                         <option value="iPhone">iPhone</option>
                         <option value="Samsung">Samsung</option>
                         <option value="Honor">Honor</option>
@@ -38,9 +39,18 @@
                 </label>
                 <label>Price (RM)
                     <select name="price">
+                        <option value="">All</option>
                         <option value="1000">1000</option>
                         <option value="2000">2000</option>
                         <option value="3000">3000</option>
+                    </select>
+                </label>
+                <label>Screen Size (Inch):
+                    <select name="size">
+                        <option value="">All</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
                     </select>
                 </label>
                 <button type="submit">Filter</button>
