@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 def get_db_connection():
     conn = sqlite3.connect('phones.db')
-    conn.row_factory = sqlite3.Row  
+    conn.row_factory = sqlite3.Row
     return conn
 
 @app.route("/", methods=["GET", "POST"])
@@ -21,7 +21,7 @@ def home():
         cursor = conn.cursor()
         
         cursor.execute("SELECT * FROM phones WHERE brand = ? AND screen_size = ? AND sim = ? AND price = ?", (brand_name, screen_size, sim, price))
-        phones = cursor.fetchall() 
+        phones = cursor.fetchall()
         
         conn.close()
 
