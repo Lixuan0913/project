@@ -45,10 +45,36 @@ def home():
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(query, params)
-    phones = cursor.fetchall()
+    rows = cursor.fetchall()
     conn.close()
 
+    #for the phone cards
+    phones = []
+    for row in rows:
+        phones.append({
+            "id": row[0],
+            "brand": row[1],
+            "model_name": row[2],
+            "price": row[3],
+            "image_filename": row[4],
+            "description": row[5]
+        })
+
     return render_template("home.html", phones=phones)
+
+@app.route("/phone/<int:phone_id>")
+def phone_descriptions(phone_id):
+    conn = sqlite3.connect('phones.db')  
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT * FROM phones WHERE id = ?", (phone_id,))
+    phone_data = cursor.fetchone()
+    conn.close()
+    
+    if not phone_data:
+        return "Sorry, the phone you're looking for doesn't exist or may have been removed."
+    
+    return render_template("phone_descriptions.html", phone=phone_data)
 
 if __name__ == "__main__":
     app.run(debug=True)

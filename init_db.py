@@ -25,15 +25,7 @@ cursor.execute("INSERT INTO phones (brand,model_name, price, image_filename, des
 cursor.execute("INSERT INTO phones (brand,model_name, price, image_filename, description) VALUES (?, ?, ?, ?, ?)", ("Honor",'Honor Play7T Pro ', 999, "h7T.png","Colour: Black, Dark Green, Silver,Capacity: 128GB,Size:162.9 x 74.5 x 7.4 mm, 175 g, 6.7 inches IPS LCD Display,CPU: Octa-Core CPU, Mali-G57 MC2 GPU"))
 cursor.execute("INSERT INTO phones (brand,model_name, price, image_filename, description) VALUES (?, ?, ?, ?, ?)", ("Honor",'HONOR 400 Pro', 2699, "h400.png","Colour: Desert Gold, Tidal Blue, Midnight Black,Capacity: 512GB,Size:160.8  x  76.1  x  8.1 mm, 205 g, 6.7 inches AMOLED display,CPU: Octa-Core CPU, Adreno 750 GPU"))
 
-try:
-    cursor.execute("ALTER TABLE phones ADD COLUMN screen_size TEXT NOT NULL DEFAULT 'unknown'")
-except sqlite3.OperationalError:
-    print("Column 'screen_size' already exists")
 
-try:
-    cursor.execute("ALTER TABLE phones ADD COLUMN sim TEXT NOT NULL DEFAULT 'unknown'")
-except sqlite3.OperationalError:
-    print("Column 'sim' already exists")
 
 conn.commit()
 conn.close()
