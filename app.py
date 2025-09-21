@@ -54,10 +54,10 @@ def home():
         phones.append({
             "id": row[0],
             "brand": row[1],
-            "price": row[2],
-            "image_filename": row[3],
-            "screen_size": row[4],
-            "sim": row[5] 
+            "model_name": row[2],
+            "price": row[3],
+            "image_filename": row[4],
+            "description": row[5]
         })
 
     return render_template("home.html", phones=phones)
