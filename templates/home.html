@@ -19,6 +19,7 @@
             <form action="/" method="POST" enctype="multipart/form-data" novalidate>
                 <label>Phone Brand:
                     <select name="brand">
+                        <option value="">All</option>
                         <option value="iPhone">iPhone</option>
                         <option value="Samsung">Samsung</option>
                         <option value="Honor">Honor</option>
@@ -26,9 +27,25 @@
                 </label>
                 <label>Price (RM)
                     <select name="price">
+                        <option value="">All</option>
                         <option value="1000">1000</option>
                         <option value="2000">2000</option>
                         <option value="3000">3000</option>
+                    </select>
+                </label>
+                <label>Screen Size (Inch):
+                    <select name="screen_size">
+                        <option value="">All</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </label>
+                <label>Sim Type:
+                    <select name="sim">
+                        <option value="">All</option>
+                        <option value="eSIM">eSIM</option>
+                        <option value="nano-SIM">nano-SIM</option>
                     </select>
                 </label>
                 <button type="submit">Filter</button>
@@ -41,6 +58,8 @@
                     <img src="{{ url_for('static', filename=phone['image_filename']) }}" alt="{{ phone['brand'] }}">
                     <p>{{ phone['brand'] }}</p>
                     <p>RM {{ phone['price'] }}</p>
+                    <p>Screen Size: {{ phone['screen_size'] }}</p>
+                    <p>Sim Type: {{ phone['sim'] }}</p>
                 </div>
             {% endfor %}
         </div>
