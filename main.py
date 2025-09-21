@@ -14,11 +14,13 @@ def home():
     if request.method == "POST":
         brand_name = request.form.get("brand")
         price = request.form.get('price')
-        
+        screen_size = request.form.get('screen_size')
+        sim = request.form.get('sim')
+
         conn = get_db_connection()
         cursor = conn.cursor()
         
-        cursor.execute("SELECT * FROM phones WHERE brand = ? AND price = ?", (brand_name, price))
+        cursor.execute("SELECT * FROM phones WHERE brand = ? AND screen_size = ? AND sim = ? AND price = ?", (brand_name, screen_size, sim, price))
         phones = cursor.fetchall() 
         
         conn.close()
