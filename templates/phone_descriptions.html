@@ -63,7 +63,7 @@
                             <div class="spec-label">Available Colors</div>
                             <div class="spec-value">
                                 {% if 'Colour:' in full_desc %}
-                                    {{ full_desc.split('Colour:')[1].split(',')[0:5] | join(', ') | replace(' ', '') }}
+                                    {{ full_desc.split('Colour:')[1].split(', Size:')[0].split(',') | join(',') }}
                                 {% endif %}
                             </div>
                         </div>
@@ -71,9 +71,7 @@
                         <div class="spec-card">
                             <div class="spec-label">Storage Capacity</div>
                             <div class="spec-value">
-                                {% if 'Capacity:' in full_desc %}
-                                    {{ full_desc.split('Capacity:')[1].split(',')[0:3] | join(', ') }}
-                                {% endif %}
+                                {{ phone.storage }}
                             </div>
                         </div>
                         <div class="spec-card">
@@ -93,9 +91,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    
-                
+    </div>             
 </body>
 </html> 

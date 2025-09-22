@@ -160,3 +160,8 @@ body.dark {
     outline: none;
     font-size: 14px;
 }
+
+.spec-label{
+    font-weight: bold;
+}
+

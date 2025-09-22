@@ -50,7 +50,8 @@ def home():
             "model_name": row[2],
             "price": row[3],
             "image_filename": row[4],
-            "description": row[5]
+            "storage": row[5],
+            "description": row[6]
         })
 
     return render_template("home.html", phones=phones)
@@ -73,7 +74,8 @@ def phone_descriptions(phone_id):
         "model_name": phone_data[2],
         "price": phone_data[3],
         "image_filename": phone_data[4],
-        "description": phone_data[5]
+        "storage":phone_data[5],
+        "description": phone_data[6]
     }
     
     
