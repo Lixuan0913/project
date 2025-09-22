@@ -67,6 +67,15 @@
                                 {% endif %}
                             </div>
                         </div>
+
+                        <div class="spec-card">
+                            <div class="spec-label">Phone Size and Weight</div>
+                            <div class="spec-value">
+                                {% if 'Size:' in full_desc %}
+                                    {{ full_desc.split('Size:')[1].split(', 6')[0].split(',') | join(',') }}
+                                {% endif %}
+                            </div>
+                        </div>
                         
                         <div class="spec-card">
                             <div class="spec-label">Storage Capacity</div>
