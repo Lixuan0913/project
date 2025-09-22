@@ -43,8 +43,13 @@ body.dark {
     top: 50%;
 }
 
-.toogle input:checked~.label {
+.toggle input:checked ~ .label {
     color: rgba(255,0,0,0.8);
+}
+
+body.dark .phone-card {
+    background: #1e1e1e; 
+    color: #f5f5f5;
 }
 
 .toggle .button {
@@ -172,3 +177,34 @@ body.dark {
 .carousel-btn.right {
     right: 10px;
 }
+.section{
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section label{
+    margin-right: 20px;
+    display: inline-block;
+    font-weight: bold;
+    color: #444;
+}
+
+.section select, .section button{
+    padding: 8px 12px;
+    margin-left: 10px;
+    border-radius: 6px;
+    border:  1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+}
+
+.spec-label{
+    font-weight: bold;
+}
+

@@ -3,6 +3,7 @@
     <head>
         <title>Phone Brand</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <nav>
             <div class="container">
                 <div class="toggle">
@@ -23,6 +24,8 @@
                         <option value="iPhone">iPhone</option>
                         <option value="Samsung">Samsung</option>
                         <option value="Honor">Honor</option>
+                        <option value="Vivo">Vivo</option>
+                        <option value="Realme">Realme</option>
                     </select>
                 </label>
                 <label>Price (RM)
@@ -33,39 +36,51 @@
                         <option value="3000">3000</option>
                     </select>
                 </label>
-                <label>Screen Size (Inch):
-                    <select name="screen_size">
+                <label>Storage
+                    <select name="storage">
                         <option value="">All</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                </label>
-                <label>Sim Type:
-                    <select name="sim">
-                        <option value="">All</option>
-                        <option value="eSIM">eSIM</option>
-                        <option value="nano-SIM">nano-SIM</option>
+                        <option value="128GB">128GB</option>
+                        <option value="256GB">256GB</option>
+                        <option value="512GB">512GB</option>
                     </select>
                 </label>
                 <button type="submit">Filter</button>
             </form>
         </div>
 
+
         <div class="carousel-container">
             <button class="carousel-btn left" onclick="scrollGallery(-1)">❮</button>
             <div class="phone-carousel" id="phoneCarousel">
                 {% for phone in phones %}
-                    <div class="phone-card">
-                        <img src="{{ url_for('static', filename=phone['image_filename']) }}" alt="{{ phone['brand'] }}">
-                        <p>{{ phone['brand'] }}</p>
-                        <p>RM {{ phone['price'] }}</p>
-                        <p>Screen Size: {{ phone['screen_size'] }}</p>
-                        <p>Sim Type: {{ phone['sim'] }}</p>
+                <div class="phone-card" onclick="window.location.href='{{url_for('phone_descriptions', phone_id=phone.id)}}'">
+                    <div class="phone-image-wrapper">
+                        <img src="{{ url_for('static', filename=phone.image_filename) }}" alt="{{ phone.model_name }}" class="phone-img">
                     </div>
-                {% endfor %}
+                    <div class="phone-content">
+                        <h3 class="phone-title">{{ phone.model_name }}</h3>
+                        <div class="phone-details">
+                            <div class="phone-brand">
+                                <span class="phone-icon"><i class="fa-solid fa-mobile"></i></span>
+                                <span>{{ phone.brand }}</span>
+                            </div>
+                            <div class="phone-price">
+                                <span class="phone-icon"><i class="fa-solid fa-tag"></i></span>
+                                <span>RM {{ phone.price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="no-phones">
+                    <h3>No phone model found</h3>
+                    <p>Try adjusting your search filters</p>
+                </div>
+            {% endfor %}
             </div>
             <button class="carousel-btn right" onclick="scrollGallery(1)">❯</button>
+
+       
         </div>
 
         <script src="{{ url_for('static', filename='theme.js') }}"></script>

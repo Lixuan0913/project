@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone Descriptions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <a href="{{ url_for('home') }}" style="text-decoration: none;">
+        <button
+          class="bg-white text-center w-36 rounded-xl h-10 relative text-black text-sm font-semibold group"
+          type="button"
+        >
+          <div
+            class="bg-green-400 rounded-lg h-8 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[136px] z-10 duration-500"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1024 1024"
+              height="16px"
+              width="16px"
+            >
+              <path
+                d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
+                fill="#000000"
+              ></path>
+              <path
+                d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
+                fill="#000000"
+              ></path>
+            </svg>
+          </div>
+          <p class="translate-x-2 text-sm">Go Back</p>
+        </button>
+      </a>
+      
+    
+    <h1><strong>View Phone Description</strong></h1>
+    <div class="phone-header">
+        <img src="{{ url_for('static', filename=phone.image_filename) }}" alt="{{ phone.model_name }}" class="phone-img">
+        <div class="phone-info">
+            <h2 class="phone-model">{{ phone.model_name }}</h2>
+            <div class="phone-meta">
+                <div class="meta-item">
+                    <i class="fas fa-mobile-alt meta-icon"></i>
+                    <span><strong>Phone Brand:</strong> {{ phone.brand }}</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tag meta-icon"></i>
+                    <span><strong>Price: </strong>RM {{ phone.price }}</span>
+                </div>
+                <div class="meta-item">
+                    <h2 class="section-title"><strong>Descriptions: </strong></h2>
+                </div>
+                    
+                <div class="specs-container">
+                    <div class="spec-list">
+                        {% set full_desc = phone.description %}
+                        
+                        <div class="spec-card">
+                            <div class="spec-label">Available Colors</div>
+                            <div class="spec-value">
+                                {% if 'Colour:' in full_desc %}
+                                    {{ full_desc.split('Colour:')[1].split(', Size:')[0].split(',') | join(',') }}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="spec-card">
+                            <div class="spec-label">Phone Size and Weight</div>
+                            <div class="spec-value">
+                                {% if 'Size:' in full_desc %}
+                                    {{ full_desc.split('Size:')[1].split(', 6')[0].split(',') | join(',') }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="spec-card">
+                            <div class="spec-label">Storage Capacity</div>
+                            <div class="spec-value">
+                                {{ phone.storage }}
+                            </div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="spec-label">Display</div>
+                            <div class="spec-value">6.1-inch OLED Display</div>
+                        </div>
+                        
+                        <div class="spec-card">
+                            <div class="spec-label">Processor</div>
+                            <div class="spec-value">
+                                {% if 'CPU:' in full_desc %}
+                                    {{ full_desc.split('CPU:')[1].strip() }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>             
+</body>
+</html> 
