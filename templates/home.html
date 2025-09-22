@@ -48,35 +48,42 @@
             </form>
         </div>
 
-        <div class="phone-gallery">
-            {% for phone in phones %}
-            <div class="phone-card" onclick="window.location.href='{{url_for('phone_descriptions', phone_id=phone.id)}}'">
-                <div class="phone-image-wrapper">
-                    <img src="{{ url_for('static', filename=phone.image_filename) }}" alt="{{ phone.model_name }}" class="phone-img">
-                </div>
-                <div class="phone-content">
-                    <h3 class="phone-title">{{ phone.model_name }}</h3>
-                    <div class="phone-details">
-                        <div class="phone-brand">
-                            <span class="phone-icon"><i class="fa-solid fa-mobile"></i></span>
-                            <span>{{ phone.brand }}</span>
-                        </div>
-                        <div class="phone-price">
-                            <span class="phone-icon"><i class="fa-solid fa-tag"></i></span>
-                            <span>RM {{ phone.price }}</span>
+
+        <div class="carousel-container">
+            <button class="carousel-btn left" onclick="scrollGallery(-1)">❮</button>
+            <div class="phone-carousel" id="phoneCarousel">
+                {% for phone in phones %}
+                <div class="phone-card" onclick="window.location.href='{{url_for('phone_descriptions', phone_id=phone.id)}}'">
+                    <div class="phone-image-wrapper">
+                        <img src="{{ url_for('static', filename=phone.image_filename) }}" alt="{{ phone.model_name }}" class="phone-img">
+                    </div>
+                    <div class="phone-content">
+                        <h3 class="phone-title">{{ phone.model_name }}</h3>
+                        <div class="phone-details">
+                            <div class="phone-brand">
+                                <span class="phone-icon"><i class="fa-solid fa-mobile"></i></span>
+                                <span>{{ phone.brand }}</span>
+                            </div>
+                            <div class="phone-price">
+                                <span class="phone-icon"><i class="fa-solid fa-tag"></i></span>
+                                <span>RM {{ phone.price }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             {% else %}
                 <div class="no-phones">
                     <h3>No phone model found</h3>
                     <p>Try adjusting your search filters</p>
                 </div>
             {% endfor %}
+            </div>
+            <button class="carousel-btn right" onclick="scrollGallery(1)">❯</button>
+
+       
         </div>
 
         <script src="{{ url_for('static', filename='theme.js') }}"></script>
-
+        <script src="{{ url_for('static', filename='carousel.js') }}"></script>
     </body>
 </html>
