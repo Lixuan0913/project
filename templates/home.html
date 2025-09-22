@@ -52,19 +52,23 @@
             </form>
         </div>
 
-        <div class="phone-gallery">
-            {% for phone in phones %}
-                <div class="phone-card">
-                    <img src="{{ url_for('static', filename=phone['image_filename']) }}" alt="{{ phone['brand'] }}">
-                    <p>{{ phone['brand'] }}</p>
-                    <p>RM {{ phone['price'] }}</p>
-                    <p>Screen Size: {{ phone['screen_size'] }}</p>
-                    <p>Sim Type: {{ phone['sim'] }}</p>
-                </div>
-            {% endfor %}
+        <div class="carousel-container">
+            <button class="carousel-btn left" onclick="scrollGallery(-1)">❮</button>
+            <div class="phone-carousel" id="phoneCarousel">
+                {% for phone in phones %}
+                    <div class="phone-card">
+                        <img src="{{ url_for('static', filename=phone['image_filename']) }}" alt="{{ phone['brand'] }}">
+                        <p>{{ phone['brand'] }}</p>
+                        <p>RM {{ phone['price'] }}</p>
+                        <p>Screen Size: {{ phone['screen_size'] }}</p>
+                        <p>Sim Type: {{ phone['sim'] }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-btn right" onclick="scrollGallery(1)">❯</button>
         </div>
 
         <script src="{{ url_for('static', filename='theme.js') }}"></script>
-
+        <script src="{{ url_for('static', filename='carousel.js') }}"></script>
     </body>
 </html>
