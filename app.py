@@ -12,8 +12,7 @@ def get_db_connection():
 def home():
     brand_name = request.form.get("brand", "")
     price = request.form.get('price', "")
-    screen_size = request.form.get('screen_size', "")
-    sim = request.form.get('sim', "")
+    storage = request.form.get('storage', "")
 
     query = "SELECT * FROM phones WHERE 1=1"
     params = []
@@ -25,22 +24,16 @@ def home():
         query += "" 
 
     if price:
-        query += " AND price = ?"
+        query += " AND price <= ?"
         params.append(price)
     else:
         query += "" 
 
-    if screen_size:
-        query += " AND screen_size = ?"
-        params.append(screen_size)
+    if storage:
+        query += " AND storage LIKE ?"
+        params.append(f"%{storage}%")
     else:
-        query += "" 
-
-    if sim:
-        query += " AND sim = ?"
-        params.append(sim)
-    else:
-        query += ""  
+        query += ""
 
     conn = get_db_connection()
     cursor = conn.cursor()
