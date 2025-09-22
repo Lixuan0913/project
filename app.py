@@ -74,7 +74,17 @@ def phone_descriptions(phone_id):
     if not phone_data:
         return "Sorry, the phone you're looking for doesn't exist or may have been removed."
     
-    return render_template("phone_descriptions.html", phone=phone_data)
+    phone = {
+        "id": phone_data[0],
+        "brand": phone_data[1],
+        "model_name": phone_data[2],
+        "price": phone_data[3],
+        "image_filename": phone_data[4],
+        "description": phone_data[5]
+    }
+    
+    
+    return render_template("phone_descriptions.html", phone=phone)
 
 if __name__ == "__main__":
     app.run(debug=True)
