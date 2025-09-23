@@ -4,6 +4,10 @@ nav {
     right: 20px;
 }
 
+h1 {
+    margin-top: 50px;
+}
+
 /* light mode default */
 body {
     background-color: #fff;
@@ -17,8 +21,76 @@ body {
 
 /* dark mode */
 body.dark {
-    background-color: #121212;
-    color: #f5f5f5;
+    background: #252525;
+    color: #e0e0e0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body.dark .section {
+    background: #1c1c1c;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.6),
+        -8px -8px 16px rgba(255, 255, 255, 0.05);
+    color: #e0e0e0;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark .section select,
+body.dark .section button {
+    background: #1c1c1c;
+    color: #a4a4a4;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 
+        inset 4px 4px 8px rgba(0, 0, 0, 0.6),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+    transition: all 0.5s ease-in-out;
+}
+
+body.dark .section button:hover {
+    box-shadow: 
+        inset 2px 2px 4px rgb(62, 62, 62),
+        inset -2px -2px 4px rgba(90, 90, 90, 0.07);
+}
+
+body.dark .phone-card {
+    background: #444;
+    color: #c2c2c2;
+    border-radius: 12px;
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.7),
+        -6px -6px 12px rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+body.dark .phone-card.active {
+    transform: scale(1.1);
+    box-shadow: 
+        20px 20px 30px rgba(0, 0, 0, 0.8),
+        -20px -20px 30px rgba(255, 255, 255, 0.07),
+}
+
+body.dark .carousel-container {
+    background: #252525;
+    border-radius: 16px;
+}
+
+body.dark .carousel-btn {
+    background: #1c1c1c;
+    color: #e0e0e0;
+    border-radius: 50%;
+    box-shadow: 
+        4px 4px 8px rgba(0, 0, 0, 0.7),
+        -4px -4px 8px rgba(255, 255, 255, 0.06);
+    transition: all 0.2s ease-in-out;
+}
+
+body.dark .carousel-btn:hover {
+    box-shadow: 
+        inset 2px 2px 5px rgba(0, 0, 0, 0.8),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.07);
 }
 
 /* light & dark mode switch */
@@ -94,7 +166,11 @@ body.dark .phone-card {
 
 .toggle input:active ~ .button {
     filter: blur(0.5px);
-    box-shadow: 0 12px 25px -4px rgba(0, 0, 0, 0.4), inset 0 -8px 30px 1px rgba(255, 255, 255, 0.9), 0 -10px 15px -1px rgba(255, 255, 255, 0.6), inset 0 8px 25px 0 rgba(0, 0, 0, 0.4), inset 0 0 10px 1px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 12px 25px -4px rgba(0, 0, 0, 0.4), 
+    inset 0 -8px 30px 1px rgba(255, 255, 255, 0.9), 
+          0 -10px 15px -1px rgba(255, 255, 255, 0.6), 
+    inset 0 8px 25px 0 rgba(0, 0, 0, 0.4), 
+    inset 0 0 10px 1px rgba(255, 255, 255, 0.6);
 }
 
 .toggle input:active ~ .label {
@@ -114,9 +190,8 @@ body.dark .phone-card {
 .toggle input:checked ~ .label {
     color: rgba(255, 255, 255, 0.9);
 }
-
-
             
+
 .phone-card img {
     width: 100%;
     border-radius: 10px;
@@ -131,28 +206,36 @@ body.dark .phone-card {
 .phone-card {
     flex: 0 0 200px;
     text-align: center;
-    border-radius: 8px;
-    padding: 10px;
-    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    background: #f0f0f0;
+    color: #333;
     transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 
+        6px 6px 12px #cbced1,
+        -6px -6px 12px #fff;
 }
 
 .phone-card.active {
-    transform: scale(1.1); /* slightly bigger */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    z-index: 1;
+    transform: scale(1.05);
+    box-shadow: 
+        12px 12px 24px #cbced1,
+        -12px -12px 24px #fff;
 }
 
 .carousel-container {
     width: 80%;
+    height: 400px;
     margin: auto;
     overflow: hidden;
     position: relative;
+    border-radius: 16px;
+    background: #fff;
 }
 
 .phone-carousel {
     display: flex;
-    gap: 16px;
+    gap: 20px;
     transition: transform 0.5s ease;
 }
 
@@ -160,14 +243,24 @@ body.dark .phone-card {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: white;
+    background: #f0f0f3;
+    color: #333;
     border: none;
     font-size: 20px;
     padding: 10px;
     cursor: pointer;
     border-radius: 50%;
     z-index: 10;
+    box-shadow: 
+        4px 4px 8px #cbced1,
+        -4px -4px 8px #fff;
+    transition: all 0.2s ease-in-out;
+}
+
+.carousel-btn:hover {
+    box-shadow: 
+        inset 2px 2px 5px #cbced1,
+        inset -2px -2px 5px #fff;
 }
 
 .carousel-btn.left {
@@ -177,34 +270,51 @@ body.dark .phone-card {
 .carousel-btn.right {
     right: 10px;
 }
-.section{
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    background-color: white;
+
+.section {
+    border: none;
+    border-radius: 12px;
+    background: #f0f0f3;
     padding: 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 
+        8px 8px 16px #cbced1,
+        -8px -8px 16px #fff;
+    transition: all 0.3s ease-in-out;
 }
 
-.section label{
+.section label {
     margin-right: 20px;
     display: inline-block;
     font-weight: bold;
-    color: #444;
+    color: #666;
 }
 
-.section select, .section button{
+.section select,
+.section button {
     padding: 8px 12px;
     margin-left: 10px;
-    border-radius: 6px;
-    border:  1px solid #ccc;
-    outline: none;
+    border: none;
+    border-radius: 8px;
+    background: #f0f0f3;
+    color: #333;
     font-size: 14px;
+    outline: none;
+    box-shadow: 
+        inset 4px 4px 8px #cbced1,
+        inset -4px -4px 8px #fff;
+    transition: all 0.2s ease-in-out;
 }
 
-.spec-label{
+.section button:hover {
+    box-shadow: 
+        inset 2px 2px 4px #cbced1,
+        inset -2px -2px 4px #fff;
+}
+
+.spec-label {
     font-weight: bold;
 }
-
