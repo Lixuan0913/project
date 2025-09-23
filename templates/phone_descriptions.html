@@ -6,7 +6,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <nav>
+        <div class="container">
+            <div class="toggle">
+                <input type="checkbox" id="input">
+                <span class="button"></span>
+                <span class="label">☼</span>
+            </div>
+        </div>
+    </nav>
 </head>
+
 <body>
     <a href="{{ url_for('home') }}" style="text-decoration: none;">
         <button
@@ -100,6 +110,9 @@
                 </div>
             </div>
         </div>
-    </div>             
+    </div>
+    
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+             
 </body>
 </html> 
