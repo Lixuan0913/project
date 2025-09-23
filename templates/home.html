@@ -16,7 +16,7 @@
     </head>
 
     <body>
-        <h1> -ˋˏ¨'*•.¸ PHONE RECOMMENDATIONS ¸.•*'¨ˎˊ- </h1>
+        <h1><a href="/" class="title-link"> -ˋˏ¨'*•.¸ PHONE RECOMMENDATIONS ¸.•*'¨ˎˊ- </a></h1>
         <div class="section">
             <form action="/" method="POST" enctype="multipart/form-data" novalidate>
                 <label>Phone Brand:
@@ -56,7 +56,7 @@
                 {% for phone in phones %}
                 <div class="phone-card" onclick="window.location.href='{{url_for('phone_descriptions', phone_id=phone.id)}}'">
                     <div class="phone-image-wrapper">
-                        <img src="{{ url_for('static', filename=phone.image_filename) }}" alt="{{ phone.model_name }}" class="phone-img">
+                        <img src="{{ url_for('static', filename=phone.image_filename) }}" alt="{{ phone.model_name }}">
                     </div>
                     <div class="phone-content">
                         <h3 class="phone-title">{{ phone.model_name }}</h3>
