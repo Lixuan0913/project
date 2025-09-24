@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Results - Phone Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <nav>
+        <div class="container">
+            <div class="toggle">
+                <input type="checkbox" id="input">
+                <span class="button"></span>
+                <span class="label">☼</span>
+            </div>
+        </div>
+    </nav>
+</head>
+<body>
+    <h1><a href="/" class="title-link"> -ˋˏ¨'*•.¸ QUIZ RESULTS ¸.•*'¨ˎˊ- </a></h1>
+    
+    <div class="quiz-results">
+        <h2>Based on your preferences, we recommend:</h2>
+        
+        {% if phones %}
+        <div class="carousel-container">
+            <div class="phone-carousel">
+                {% for phone in phones %}
+                <div class="phone-card" onclick="window.location.href='{{url_for('phone_descriptions', phone_id=phone.id)}}'">
+                    <div class="phone-image-wrapper">
+                        <img src="{{ url_for('static', filename=phone.image_filename) }}" alt="{{ phone.model_name }}">
+                    </div>
+                    <div class="phone-content">
+                        <h3 class="phone-title">{{ phone.model_name }}</h3>
+                        <div class="phone-details">
+                            <div class="phone-brand">
+                                <span class="phone-icon"><i class="fa-solid fa-mobile"></i></span>
+                                <span>{{ phone.brand }}</span>
+                            </div>
+                            <div class="phone-price">
+                                <span class="phone-icon"><i class="fa-solid fa-tag"></i></span>
+                                <span>RM {{ phone.price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="no-results">
+            <h3>No perfect matches found based on your quiz answers</h3>
+            <p>Try <a href="{{ url_for('reset_quiz') }}">taking the quiz again</a> or browse our full collection</p>
+        </div>
+        {% endif %}
+        
+        <div class="quiz-actions">
+            <a href="{{ url_for('reset_quiz') }}" class="quiz-button">Take Quiz Again</a>
+            <a href="{{ url_for('home') }}" class="quiz-button">Back to Home</a>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+</body>
+</html>

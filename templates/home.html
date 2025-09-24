@@ -49,7 +49,6 @@
             </form>
         </div>
 
-
         <div class="carousel-container">
             <button class="carousel-btn left" onclick="scrollGallery(-1)">❮</button>
             <div class="phone-carousel" id="phoneCarousel">
@@ -82,8 +81,90 @@
             <button class="carousel-btn right" onclick="scrollGallery(1)">❯</button>
         </div>
 
+<!-- Quiz Section -->
+<div class="quiz-section">
+    <h2>Find Your Perfect Phone - Take Our Quiz!</h2>
+    
+    {% if current_question <= 5 %}
+    <div class="quiz-container">
+        <form action="/" method="POST">
+            <input type="hidden" name="quiz_question" value="{{ current_question }}">
+            
+            <div class="quiz-progress">
+                <p>Question {{ current_question }} of 5</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: {{ (current_question / 5) * 100 }}%"></div>
+                </div>
+                {% if 'quiz_answers' in session %}
+                <p><small>Answered: {{ session['quiz_answers']|length }}/5</small></p>
+                {% endif %}
+            </div>
+            
+            <div class="quiz-question">
+                {% if current_question == 1 %}
+                <h3>What's your budget range?</h3>
+                <div class="quiz-options">
+                    <label><input type="radio" name="quiz_answer" value="budget" required> Budget (Under RM 1000)</label>
+                    <label><input type="radio" name="quiz_answer" value="midrange" required> Mid-range (RM 1000 - 2000)</label>
+                    <label><input type="radio" name="quiz_answer" value="premium" required> Premium (Above RM 2000)</label>
+                </div>
+                
+                {% elif current_question == 2 %}
+                <h3>Which brand do you prefer?</h3>
+                <div class="quiz-options">
+                    <label><input type="radio" name="quiz_answer" value="apple" required> Apple</label>
+                    <label><input type="radio" name="quiz_answer" value="samsung" required> Samsung</label>
+                    <label><input type="radio" name="quiz_answer" value="honor" required> Honor</label>
+                    <label><input type="radio" name="quiz_answer" value="vivo" required> Vivo</label>
+                    <label><input type="radio" name="quiz_answer" value="realme" required> Realme</label>
+                </div>
+                
+                {% elif current_question == 3 %}
+                <h3>How much storage do you need?</h3>
+                <div class="quiz-options">
+                    <label><input type="radio" name="quiz_answer" value="low" required> 128GB (Basic usage)</label>
+                    <label><input type="radio" name="quiz_answer" value="medium" required> 256GB (Moderate usage)</label>
+                    <label><input type="radio" name="quiz_answer" value="high" required> 512GB (Heavy usage)</label>
+                </div>
+                
+                {% elif current_question == 4 %}
+                <h3>What's your primary usage?</h3>
+                <div class="quiz-options">
+                    <label><input type="radio" name="quiz_answer" value="basic" required> Basic (Calls, messaging, social media)</label>
+                    <label><input type="radio" name="quiz_answer" value="gaming" required> Gaming & Multimedia</label>
+                    <label><input type="radio" name="quiz_answer" value="work" required> Work & Productivity</label>
+                    <label><input type="radio" name="quiz_answer" value="photography" required> Photography & Content Creation</label>
+                </div>
+                
+                {% elif current_question == 5 %}
+                <h3>What's most important to you?</h3>
+                <div class="quiz-options">
+                    <label><input type="radio" name="quiz_answer" value="performance" required> Performance & Speed</label>
+                    <label><input type="radio" name="quiz_answer" value="battery" required> Battery Life</label>
+                    <label><input type="radio" name="quiz_answer" value="camera" required> Camera Quality</label>
+                    <label><input type="radio" name="quiz_answer" value="value" required> Best Value for Money</label>
+                </div>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="quiz-submit">
+                {% if current_question == 5 %}Get Recommendations{% else %}Next Question{% endif %}
+            </button>
+        </form>
+        
+        {% if session.get('quiz_answers') %}
+        <a href="{{ url_for('reset_quiz') }}" class="quiz-reset">Restart Quiz</a>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="quiz-complete">
+        <p>You've completed the quiz! <a href="{{ url_for('quiz_results') }}">View your recommendations</a></p>
+        <a href="{{ url_for('reset_quiz') }}" class="quiz-button">Take Quiz Again</a>
+    </div>
+    {% endif %}
+</div>
+
         <script src="{{ url_for('static', filename='theme.js') }}"></script>
         <script src="{{ url_for('static', filename='carousel.js') }}"></script>
-
     </body>
 </html>
