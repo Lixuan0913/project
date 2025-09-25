@@ -265,3 +265,476 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+/* Dark Mode */
+body.dark {
+    background: var(--background-color);
+    color: var(--text-primary);
+}
+
+body.dark .phone-header {
+    background: var(--card-background);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+body.dark .phone-img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+body.dark .phone-model {
+    color: var(--text-primary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .meta-item {
+    color: var(--text-secondary);
+}
+
+body.dark .meta-item strong {
+    color: var(--text-primary);
+}
+
+body.dark .meta-icon {
+    color: var(--primary-color);
+    filter: brightness(1.2);
+}
+
+body.dark .section-title {
+    color: var(--text-primary);
+    border-bottom-color: var(--accent-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .spec-card {
+    background: #1c1c1c;
+    border: 1px solid var(--border-color);
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.7),
+        -6px -6px 12px rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+body.dark .spec-card::before {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+body.dark .spec-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        20px 20px 30px rgba(0, 0, 0, 0.8),
+        -20px -20px 30px rgba(255, 255, 255, 0.07);
+    border-color: var(--primary-color);
+}
+
+body.dark .spec-label {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+body.dark .spec-value {
+    color: var(--text-primary);
+}
+
+/* Dark mode back button */
+body.dark .bg-white.text-center.w-36 {
+    background: #1c1c1c !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color);
+    box-shadow: 
+        4px 4px 8px rgba(0, 0, 0, 0.7),
+        -4px -4px 8px rgba(255, 255, 255, 0.06);
+}
+
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --accent-color: #10b981;
+    --background-color: #f8fafc;
+    --card-background: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+}
+
+body.dark {
+    --primary-color: #3b82f6;
+    --secondary-color: #94a3b8;
+    --accent-color: #10b981;
+    --background-color: #252525;
+    --card-background: #1e1e1e;
+    --text-primary: #f5f5f5;
+    --text-secondary: #c2c2c2;
+    --border-color: #374151;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 6px 6px 12px rgba(0, 0, 0, 0.7), -6px -6px 12px rgba(255, 255, 255, 0.05);
+    --shadow-lg: 20px 20px 30px rgba(0, 0, 0, 0.8), -20px -20px 30px rgba(255, 255, 255, 0.07);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Image */
+.phone-img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    margin: 0 auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.phone-img:hover {
+    transform: scale(1.05);
+}
+
+/* View in diferent screen sizes */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        margin: 1rem 0;
+    }
+    
+    .phone-header {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.5rem;
+        text-align: center;
+    }
+    
+    .phone-model {
+        font-size: 1.75rem;
+    }
+    
+    .spec-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .spec-card {
+        padding: 1rem;
+    }
+    
+    .phone-img {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .phone-header {
+        padding: 1rem;
+    }
+    
+    .phone-model {
+        font-size: 1.5rem;
+    }
+    
+    .meta-item {
+        font-size: 0.9rem;
+    }
+    
+    .spec-card {
+        padding: 0.75rem;
+    }
+}
+
+.spec-card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.spec-card:nth-child(1) { animation-delay: 0.1s; }
+.spec-card:nth-child(2) { animation-delay: 0.2s; }
+.spec-card:nth-child(3) { animation-delay: 0.3s; }
+.spec-card:nth-child(4) { animation-delay: 0.4s; }
+.spec-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* light & dark mode switch */
+.toggle {
+    display: inline-block;
+    position: relative;
+    height: 100px;
+    width: 100px;
+}
+
+.toggle:before {
+    box-shadow: 0;
+    border-radius: 84.5px;
+    background: #fff;
+    position: absolute;
+    margin-left: -36px;
+    margin-top: -36px;
+    opacity: 0.2;
+    height: 72px;
+    width: 72px;
+    left: 50%;
+    top: 50%;
+}
+
+.toggle input:checked ~ .label {
+    color: rgba(255,0,0,0.8);
+}
+
+body.dark .phone-card {
+    background: #1e1e1e; 
+    color: #f5f5f5;
+}
+
+.toggle .button {
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 15px 25px -4px rgba(0, 0, 0, 0.5), inset 0 -3px 4px -1px rgba(0, 0, 0, 0.2), 0 -10px 15px -1px rgba(255, 255, 255, 0.6), inset 0 3px 4px -1px rgba(255, 255, 255, 0.2), inset 0 0 5px 1px rgba(255, 255, 255, 0.8), inset 0 20px 30px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 68.8px;
+    position: absolute;
+    background: #eaeaea;
+    margin-left: -34.4px;
+    margin-top: -34.4px;
+    display: block;
+    height: 68.8px;
+    width: 68.8px;
+    left: 50%;
+    top: 50%;
+}
+
+.toggle .label {
+    transition: color 300ms ease-out;
+    line-height: 101px;
+    text-align: center;
+    position: absolute;
+    font-weight: 700;
+    font-size: 28px;
+    display: block;
+    opacity: 0.9;
+    height: 100%;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.toggle input {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.toggle input:active ~ .button {
+    filter: blur(0.5px);
+    box-shadow: 0 12px 25px -4px rgba(0, 0, 0, 0.4), 
+    inset 0 -8px 30px 1px rgba(255, 255, 255, 0.9), 
+          0 -10px 15px -1px rgba(255, 255, 255, 0.6), 
+    inset 0 8px 25px 0 rgba(0, 0, 0, 0.4), 
+    inset 0 0 10px 1px rgba(255, 255, 255, 0.6);
+}
+
+.toggle input:active ~ .label {
+    font-size: 26px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.toggle input:checked ~ .button {
+    background: #333;
+    box-shadow: 
+        0 10px 20px -4px rgba(0, 0, 0, 0.8),
+        inset 0 -3px 5px -1px rgba(255, 255, 255, 0.2),
+        inset 0 3px 5px -1px rgba(0, 0, 0, 0.6);
+    filter: blur(0.5px);
+}
+
+.toggle input:checked ~ .label {
+    color: rgba(255, 255, 255, 0.9);
+}
+            
+
+.phone-card img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+    
+.phone-card p {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.phone-card {
+    flex: 0 0 200px;
+    text-align: center;
+    border-radius: 12px;
+    padding: 15px;
+    background: #f0f0f0;
+    color: #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 
+        6px 6px 12px #cbced1,
+        -6px -6px 12px #fff;
+}
+
+.phone-card.active {
+    transform: scale(1.05);
+    box-shadow: 
+        12px 12px 24px #cbced1,
+        -12px -12px 24px #fff;
+}
+
+
+.phone-img{
+    width: 100%;
+    height: 50%;
+    max-width: 250px;
+    display: block;
+    margin: 0 auto;
+    
+}
+
+.phone-model{
+    font-size: 1.2rem;   
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    font-weight: bold; 
+    color: #2c3e50;    
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;       
+}
+
+.carousel-container {
+    width: 80%;
+    height: 400px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 16px;
+    background: #fff;
+}
+
+.phone-carousel {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #f0f0f3;
+    color: #333;
+    border: none;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 
+        4px 4px 8px #cbced1,
+        -4px -4px 8px #fff;
+    transition: all 0.2s ease-in-out;
+}
+
+.carousel-btn:hover {
+    box-shadow: 
+        inset 2px 2px 5px #cbced1,
+        inset -2px -2px 5px #fff;
+}
+
+.carousel-btn.left {
+    left: 10px;
+}
+
+.carousel-btn.right {
+    right: 10px;
+}
+
+.section {
+    border: none;
+    border-radius: 12px;
+    background: #f0f0f3;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 
+        8px 8px 16px #cbced1,
+        -8px -8px 16px #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.section label {
+    margin-right: 20px;
+    display: inline-block;
+    font-weight: bold;
+    color: #666;
+}
+
+.section select,
+.section button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #f0f0f3;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+    box-shadow: 
+        inset 4px 4px 8px #cbced1,
+        inset -4px -4px 8px #fff;
+    transition: all 0.2s ease-in-out;
+}
+
+.section button:hover {
+    box-shadow: 
+        inset 2px 2px 4px #cbced1,
+        inset -2px -2px 4px #fff;
+}
+
+.spec-label {
+    font-weight: bold;
+}
+
+.title-link{
+    color: inherit; 
+    text-decoration: none;
+}
